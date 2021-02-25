@@ -66,27 +66,18 @@ newQuestion = () => {
     
     // Create <div class="container">
     let divContainer = document.createElement('div');
-    divContainer.className = 'new-card';
+    divContainer.className = 'card border-success mb-3';
+    divContainer.style.width= '25rem';
     divContainer.innerHTML = `
-        <div id="game" class="justify-center flex-column">
-            <h2 id="question">${currentQues.question}</h2>
-            <div class="choice-container">
-                <p class="choice-prefix">A</p>
-                <p class="choice-text" data-number="1">${currentQues.choice1}</p>
-            </div>
-            <div class="choice-container">
-                <p class="choice-prefix">B</p>
-                <p class="choice-text" data-number="2">${currentQues.choice2}</p>
-            </div>
-            <div class="choice-container">
-                <p class="choice-prefix">C</p>
-                <p class="choice-text" data-number="3">${currentQues.choice3}</p>
-            </div>
-            <div class="choice-container">
-                <p class="choice-prefix">D</p>
-                <p class="choice-text" data-number="4">${currentQues.choice4}</p>
-            </div>
+        <div class='card-header'>
+            ${currentQues.question}
         </div>
+        <ul class='list-group list-group-flush'>           
+            <li class='list-group-item'>A &nbsp;   ${currentQues.choice1}</li>
+            <li class='list-group-item'>B &nbsp;   ${currentQues.choice2}</li>      
+            <li class='list-group-item'>C &nbsp;   ${currentQues.choice3}</li>      
+            <li class='list-group-item'>D &nbsp;   ${currentQues.choice4}</li>
+        </ul>
     `;
 
     bodyContainer.append(divContainer);
@@ -111,14 +102,22 @@ checkAnswer = () => {
             // The user can only click/answer once
             acceptAnswer = false;
 
-            const userAnswer = event.target.innerText;
-            console.log(userAnswer);
-            console.log(userAnswer === currentQues.answer);
-
-            let oldDiv = document.querySelector(".new-card");
-            oldDiv.remove();
+            const userAnswer = event.target;
             
-            newQuestion();
+            // Setting up conditionals to check if the Answer is correct or incorrect
+            const addClass = (userAnswer.innerText === currentQues.answer) ? "correct" : "incorrect";
+
+            userAnswer.parentElement.classList.add(addClass);
+
+            setTimeout( () => {
+                userAnswer.parentElement.classList.add(addClass);
+                
+                let oldDiv = document.querySelector(".new-card");
+                oldDiv.remove();
+                
+                newQuestion();
+            }, 1000)
+            
         })
     })
 }
