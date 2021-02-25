@@ -8,11 +8,11 @@ playBtn.addEventListener('click', (event) => {
 
 let currentQues = {};
 let acceptAnswer = false;
-let score = 0;
+// let score = 0;
 let questionCount = 0;
 let availableQuestions = [];
 
-// hard-coded questions for now
+// Hard-Coded Questions for now
 let questions = [
     {
         question: 'Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?',
@@ -40,6 +40,7 @@ let questions = [
     },
 ];
 
+// When the User ready to Play Trivia
 startGame = () => {
     // console.log('In the Game')
     playBtn.remove();
@@ -51,6 +52,7 @@ startGame = () => {
     newQuestion();
 }
 
+// Display a New Question
 newQuestion = () => {
     if (availableQuestions.length === 0 || questionCount >= 3) {
         return endGame();
@@ -111,6 +113,7 @@ checkAnswer = () => {
 
             const userAnswer = event.target.innerText;
             console.log(userAnswer);
+            console.log(userAnswer === currentQues.answer);
 
             let oldDiv = document.querySelector(".new-card");
             oldDiv.remove();
