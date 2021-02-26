@@ -1,4 +1,8 @@
+const greeter = document.getElementById('greeter');
+const userInput = document.querySelector('.input-group');
+const addNote = document.querySelector('.veri-note');
 const playBtn = document.getElementById('play');
+// const allBrs = document.querySelectorAll('br');
 const bodyContainer = document.querySelector('.container');
 
 // Welcome user to press the Play Button
@@ -8,7 +12,7 @@ playBtn.addEventListener('click', (event) => {
 
 let currentQues = {};
 let acceptAnswer = false;
-// let score = 0;
+let score = 0;
 let questionCount = 0;
 let availableQuestions = [];
 
@@ -43,6 +47,9 @@ let questions = [
 // When the User ready to Play Trivia
 startGame = () => {
     // console.log('In the Game')
+    greeter.remove();
+    userInput.remove();
+    addNote.remove();
     playBtn.remove();
 
     questionCount = 0;
@@ -60,6 +67,10 @@ newQuestion = () => {
 
     questionCount++;
 
+    // Score Tracker
+    const scoreCount = document.createElement('h1');
+    scoreCount.innerText = score;
+
     // Initiate random question selections
     let randomIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQues = availableQuestions[randomIndex];
@@ -67,20 +78,20 @@ newQuestion = () => {
     // Create <div class="container">
     let divContainer = document.createElement('div');
     divContainer.className = 'card border-success mb-3';
-    divContainer.style.width= '25rem';
+    divContainer.style.width = '25rem';
     divContainer.innerHTML = `
         <div class='card-header'>
             ${currentQues.question}
         </div>
         <ul class='list-group list-group-flush'>           
-            <li class='list-group-item'>A &nbsp;   ${currentQues.choice1}</li>
-            <li class='list-group-item'>B &nbsp;   ${currentQues.choice2}</li>      
-            <li class='list-group-item'>C &nbsp;   ${currentQues.choice3}</li>      
-            <li class='list-group-item'>D &nbsp;   ${currentQues.choice4}</li>
+            <li class='list-group-item'> &nbsp; ${currentQues.choice1}</li>
+            <li class='list-group-item'> &nbsp; ${currentQues.choice2}</li>      
+            <li class='list-group-item'> &nbsp; ${currentQues.choice3}</li>      
+            <li class='list-group-item'> &nbsp; ${currentQues.choice4}</li>
         </ul>
     `;
 
-    bodyContainer.append(divContainer);
+    bodyContainer.append(scoreCount, divContainer);
     
     // Remove the question that is currently shown from the Questions Array
     availableQuestions.splice(randomIndex, 1);
@@ -92,7 +103,7 @@ newQuestion = () => {
 
 // Accept User Selection and Check Answer
 checkAnswer = () => {
-    const selections = Array.from(document.getElementsByClassName('choice-text'));
+    const selections = Array.from(document.getElementsByClassName('list-group-item'));
     
     selections.forEach((selection) => {
         selection.addEventListener('click', (event) => {
@@ -105,14 +116,18 @@ checkAnswer = () => {
             const userAnswer = event.target;
             
             // Setting up conditionals to check if the Answer is correct or incorrect
-            const addClass = (userAnswer.innerText === currentQues.answer) ? "correct" : "incorrect";
+            const addClass = (userAnswer.innerText.trim() === currentQues.answer) ? "correct" : "incorrect";
 
-            userAnswer.parentElement.classList.add(addClass);
+            // Update Score Count
+            if (addClass === "correct") score += 1;
+
+            userAnswer.classList.add(addClass);
+            // console.log(userAnswer);
 
             setTimeout( () => {
-                userAnswer.parentElement.classList.add(addClass);
-                
-                let oldDiv = document.querySelector(".new-card");
+                // userAnswer.classList.add(addClass);
+                                
+                let oldDiv = document.querySelector(".card.border-success.mb-3");
                 oldDiv.remove();
                 
                 newQuestion();
