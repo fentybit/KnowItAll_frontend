@@ -97,7 +97,19 @@ newQuestion = () => {
         </ul>
     `;
 
-    bodyContainer.append(scoreDiv, divContainer);
+    // Question Count Tracker
+    const questionTracker = document.createElement('p');
+    questionTracker.className = 'question-tracker text-muted';
+    questionTracker.innerHTML = `${questionCount} / 3`;
+
+    // Progress Bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress';
+    progressBar.innerHTML = `
+        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="${questionCount/3 * 100}" aria-valuemin="0" aria-valuemax="100" style="width: ${questionCount/3 * 100}%"></div>
+    `;
+
+    bodyContainer.append(scoreDiv, divContainer, questionTracker, progressBar);
     
     // Remove/Delete the question that is currently shown from the Questions Array
     availableQuestions.splice(randomIndex, 1);
@@ -136,8 +148,16 @@ checkAnswer = () => {
                 oldDiv.remove();
 
                 // Update Score Count
-                const oldScore = document.querySelector('#tracker')
+                const oldScore = document.querySelector('#tracker');
                 oldScore.remove();
+
+                // Update Question Tracker 
+                const oldQuestionTracker = document.querySelector('.question-tracker');
+                oldQuestionTracker.remove();
+
+                // Update Progress bar
+                const oldProgressBar = document.querySelector('.progress');
+                oldProgressBar.remove();
 
                 // Create New Question
                 newQuestion();

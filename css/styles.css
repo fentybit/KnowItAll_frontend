@@ -36,6 +36,10 @@ h2 {
     margin-bottom: 20px;
 }
 
+.question-tracker {
+    text-align: center;
+}
+
 p {
     margin: 0;
 }
@@ -46,8 +50,4 @@ p {
 
 #play {
     margin: 50px 0;
-}
-
-#tracker {
-    justify-content: space-between;
 }
