@@ -7,7 +7,7 @@
 <br>
 
 <strong>Domain Modeling :: Trivia Games</strong><br>
-Welcome to my simplistic version of Virtual Healthcare system.<br> 
+Welcome to my simplistic version of Online Trivia Games.<br> 
 
 <p><a href="https://github.com/fentyhall/know_it_all_backend">Frontend GitHub Repo</a></p>
 <p><a href="#">YouTube Demo</a></p>
