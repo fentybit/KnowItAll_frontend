@@ -1,22 +1,23 @@
+// Identify HTML elements from index.html
 const greeter = document.getElementById('greeter');
 const userInput = document.querySelector('.input-group');
 const addNote = document.querySelector('.veri-note');
 const playBtn = document.getElementById('play');
-// const allBrs = document.querySelectorAll('br');
 const bodyContainer = document.querySelector('.container');
 
-// Welcome user to press the Play Button
+// If the User press Play button
 playBtn.addEventListener('click', (event) => {
     startGame();
 })
 
+// Variable Declarations
 let currentQues = {};
 let acceptAnswer = false;
 let score = 0;
 let questionCount = 0;
 let availableQuestions = [];
 
-// Hard-Coded Questions for now
+// Hard-Coded Questions for DOM Manipulation Pratice
 let questions = [
     {
         question: 'Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?',
@@ -44,9 +45,9 @@ let questions = [
     },
 ];
 
-// When the User ready to Play Trivia
+// Create a New Set of Trivia Questions
 startGame = () => {
-    // console.log('In the Game')
+    // Delete HTML Welcome Page Attributes
     greeter.remove();
     userInput.remove();
     addNote.remove();
@@ -55,11 +56,10 @@ startGame = () => {
     questionCount = 0;
     score = 0;
     availableQuestions = [...questions];
-    // console.log(availableQuestions);
     newQuestion();
 }
 
-// Display a New Question
+// Update Trivia Cards
 newQuestion = () => {
     if (availableQuestions.length === 0 || questionCount >= 3) {
         return endGame();
@@ -67,7 +67,7 @@ newQuestion = () => {
 
     questionCount++;
 
-    // Score Tracker
+    // Create and Update Score Tracker
     const scoreCount = document.createElement('h1');
     scoreCount.className = 'score-tracker';
     scoreCount.innerText = score;
@@ -77,7 +77,7 @@ newQuestion = () => {
     scoreDiv.innerHTML = `<p class="text-muted" style="text-align: center;">score</p>`;
     scoreDiv.appendChild(scoreCount);
 
-    // Initiate random question selections
+    // Initialize random question selections
     let randomIndex = Math.floor(Math.random() * availableQuestions.length);
     currentQues = availableQuestions[randomIndex];
     
@@ -97,12 +97,12 @@ newQuestion = () => {
         </ul>
     `;
 
-    // Question Count Tracker
+    // Update Question Count 
     const questionTracker = document.createElement('p');
     questionTracker.className = 'question-tracker text-muted';
     questionTracker.innerHTML = `${questionCount} / 3`;
 
-    // Progress Bar
+    // Update Progress Bar
     const progressBar = document.createElement('div');
     progressBar.className = 'progress';
     progressBar.innerHTML = `
@@ -111,7 +111,7 @@ newQuestion = () => {
 
     bodyContainer.append(scoreDiv, divContainer, questionTracker, progressBar);
     
-    // Remove/Delete the question that is currently shown from the Questions Array
+    // Delete previous question from the availableQuestions Array
     availableQuestions.splice(randomIndex, 1);
 
     // Allow the user to accept an answer
@@ -119,7 +119,7 @@ newQuestion = () => {
     checkAnswer();
 }
 
-// Accept User Selection and Check Answer
+// Accept User Selection and Check Answer Validity
 checkAnswer = () => {
     const selections = Array.from(document.getElementsByClassName('list-group-item'));
     
@@ -133,33 +133,33 @@ checkAnswer = () => {
 
             const userAnswer = event.target;
             
-            // Setting up conditionals to check if the Answer is correct or incorrect
+            // Conditionals to check the userAnswer Validity
             const addClass = (userAnswer.innerText.trim() === currentQues.answer) ? "correct" : "incorrect";
 
             // Update Score Count
             if (addClass === "correct") score += 1;
 
             userAnswer.classList.add(addClass);
-            // console.log(userAnswer);
 
+            // Allow 1 second for UI exposure
             setTimeout( () => {
-                // Update Card         
+                // Delete previous Card         
                 const oldDiv = document.querySelector('.card.border-success.mb-3');
                 oldDiv.remove();
 
-                // Update Score Count
+                // Delete previous Count
                 const oldScore = document.querySelector('#tracker');
                 oldScore.remove();
 
-                // Update Question Tracker 
+                // Delete previous Question Count Tracker 
                 const oldQuestionTracker = document.querySelector('.question-tracker');
                 oldQuestionTracker.remove();
 
-                // Update Progress bar
+                // Delete previous Progress Bar
                 const oldProgressBar = document.querySelector('.progress');
                 oldProgressBar.remove();
 
-                // Create New Question
+                // Update Trivia Cards
                 newQuestion();
             }, 1000)
             
@@ -167,9 +167,9 @@ checkAnswer = () => {
     })
 }
 
-// Summary of End Game
+// Create a Summary Page
 endGame = () => {
-    // Final Score
+    // Read Final Score
     const endGameSummary = document.createElement('h1');
     endGameSummary.className = 'score-tracker';
     endGameSummary.innerText = score;
@@ -182,7 +182,7 @@ endGame = () => {
     // Set Up Conditionals for Higher Score 
 
 
-    // Button for 'Play Again'
+    // Create Play Back and Home buttons
     const endGameBtns = document.createElement('div');
     endGameBtns.className = 'd-grid gap-2';
     endGameBtns.style.width = '25rem';
@@ -195,10 +195,11 @@ endGame = () => {
     
     endGameBtns.addEventListener('click', (event) => {
         if (event.target.innerText === "Play Back") {
-            // Delete existing page buttons
+            // Delete previous buttons
             scoreDiv.remove();
             endGameBtns.remove();
 
+            // Create a New Set of Trivia Questions
             startGame();
         } else {
             window.history.go();
