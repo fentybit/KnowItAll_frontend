@@ -69,7 +69,13 @@ newQuestion = () => {
 
     // Score Tracker
     const scoreCount = document.createElement('h1');
+    scoreCount.className = 'score-tracker';
     scoreCount.innerText = score;
+    
+    const scoreDiv = document.createElement('div');
+    scoreDiv.id = 'tracker';
+    scoreDiv.innerHTML = `<p class="text-muted" style="text-align: center;">score</p>`;
+    scoreDiv.appendChild(scoreCount);
 
     // Initiate random question selections
     let randomIndex = Math.floor(Math.random() * availableQuestions.length);
@@ -91,9 +97,9 @@ newQuestion = () => {
         </ul>
     `;
 
-    bodyContainer.append(scoreCount, divContainer);
+    bodyContainer.append(scoreDiv, divContainer);
     
-    // Remove the question that is currently shown from the Questions Array
+    // Remove/Delete the question that is currently shown from the Questions Array
     availableQuestions.splice(randomIndex, 1);
 
     // Allow the user to accept an answer
@@ -125,11 +131,15 @@ checkAnswer = () => {
             // console.log(userAnswer);
 
             setTimeout( () => {
-                // userAnswer.classList.add(addClass);
-                                
-                let oldDiv = document.querySelector(".card.border-success.mb-3");
+                // Update Card         
+                const oldDiv = document.querySelector('.card.border-success.mb-3');
                 oldDiv.remove();
-                
+
+                // Update Score Count
+                const oldScore = document.querySelector('#tracker')
+                oldScore.remove();
+
+                // Create New Question
                 newQuestion();
             }, 1000)
             
@@ -137,7 +147,7 @@ checkAnswer = () => {
     })
 }
 
-// Pending
+// Summary of End Game
 endGame = () => {
     console.log("Game Over.");
 }
