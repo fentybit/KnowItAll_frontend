@@ -169,5 +169,39 @@ checkAnswer = () => {
 
 // Summary of End Game
 endGame = () => {
-    console.log("Game Over.");
+    // Final Score
+    const endGameSummary = document.createElement('h1');
+    endGameSummary.className = 'score-tracker';
+    endGameSummary.innerText = score;
+
+    const scoreDiv = document.createElement('div');
+    scoreDiv.id = 'tracker';
+    scoreDiv.innerHTML = `<p class="text-muted" style="text-align: center;">score</p>`;
+    scoreDiv.appendChild(endGameSummary);
+
+    // Set Up Conditionals for Higher Score 
+
+
+    // Button for 'Play Again'
+    const endGameBtns = document.createElement('div');
+    endGameBtns.className = 'd-grid gap-2';
+    endGameBtns.style.width = '25rem';
+    endGameBtns.innerHTML = `
+        <button type="button" class="btn btn-outline-success" id="replay">Play Back</button>
+        <button type="button" class="btn btn-outline-secondary id="home">Home</button>
+    `;
+    
+    bodyContainer.append(scoreDiv, endGameBtns);
+    
+    endGameBtns.addEventListener('click', (event) => {
+        if (event.target.innerText === "Play Back") {
+            // Delete existing page buttons
+            scoreDiv.remove();
+            endGameBtns.remove();
+
+            startGame();
+        } else {
+            window.history.go();
+        }
+    }) 
 }
