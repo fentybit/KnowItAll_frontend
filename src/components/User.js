@@ -17,16 +17,34 @@ class User {
     }
 
     static getAllUsers() {
-        Api.getUsers() 
+        userApi.getUsers() 
             .then(users => users.data.forEach(user => new User(user.attributes.name, user.attributes.avatar, user.attributes.animals_score, user.attributes.celebrities_score, user.attributes.computer_science_score, user.attributes.geography_score, user.attributes.history_score, user.attributes.mathematics_score, user.attributes.music_score, user.attributes.sports_score)))
             .catch(error => alert(error));
     }
 
-    static allUsersName() {
-        this.all.map(user => console.log(user.name));
-    }
+    static checkUserLogin() {
+        const userInput = document.getElementById('user-input').value.trim();
+        const userSearch = User.all.find(user => user.name === userInput);
 
+        if (userInput === '') {
+            userNote.innerHTML = `<small>Please enter your name.</small>`;
+        } else if (userSearch !== undefined) {
+            userNote.innerHTML = `<small>Found you!</small>`
+            
+            setTimeout(function() {
+                userForm.remove();
+                userNote.remove();
+
+                greeter.innerHTML = `Welcome back, <strong>${userSearch.name}</strong>!`
+            }, 1200);
+        } else {
+            userNote.innerHTML = `<small>User is not found.</small>`
+        }
+    }
     
+    static userSignUp() {
+        console.log("Sign Up Here")
+    }
 }
 
 
