@@ -36,16 +36,27 @@ class User {
                 userNote.remove();
 
                 greeter.innerHTML = `Welcome back, <strong>${userSearch.name}</strong>!`
-            }, 1200);
+            }, 1300);
         } else {
-            userNote.innerHTML = `<small>User is not found.</small>`
+            userNote.innerHTML = `<small>User is not found.</small>`;
         }
     }
     
     static userSignUp() {
         console.log("Sign Up Here")
+        const userInput = document.getElementById('user-input').value.trim();
+        const newUser = new User(`${userInput}`, `https://pokeres.bastionbot.org/images/pokemon/${Math.floor(Math.random()*100) + 1}.png`);
+        if (userInput === '') {
+            userNote.innerHTML = `<small>Please enter your name.</small>`;
+        } else {
+            userNote.innerHTML = `<small>Saving...</small>`;
+
+            setTimeout(function() {
+                userForm.remove();
+                userNote.remove();
+
+                greeter.innerHTML = `Welcome, <strong>${userInput}</strong>!`
+            }, 1300);
+        }
     }
 }
-
-
-    
