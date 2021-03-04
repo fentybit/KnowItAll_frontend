@@ -1,5 +1,4 @@
 const api = new Api('http://localhost:3000/api/v1');
-const apiUser = new Api('http://localhost:3000/api/users');
 
 // Identify HTML elements from index.html
 // const greeter = document.getElementById('greeter');
@@ -17,16 +16,16 @@ userForm.addEventListener('click', (event) => {
     const userInput = document.getElementById('user-input').value;
     
     if (event.target.innerHTML === "Log In") {
-        if (!userInput) userNote.innerHTML = 'User Name is invalid.';
+        if (!userInput) userNote.innerHTML = `<small>User Name is invalid.</small>`;
         // console.log(`${userInput}`)
         User.getAllUsers();
-        User.all.map(user => console.log(user.name));
+        User.allUsersName();
         
 
     } 
     
     if (event.target.innerHTML === "Sign Up") {
-        if (!userInput) userNote.innerHTML = 'User Name is invalid.';
+        if (!userInput) userNote.innerHTML = `<small>User Name is invalid.</small>`;
 
         
 

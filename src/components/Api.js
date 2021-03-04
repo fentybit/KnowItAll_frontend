@@ -4,7 +4,7 @@ class Api {
         this.url = url;
     }
 
-    getUsers = () => fetch(`${this.url}`).then(resp => resp.json());
+    static getUsers = () => fetch('http://localhost:3000/api/users').then(resp => resp.json());
 
     getCategories = () => fetch(`${this.url}/categories`).then(resp => resp.json());
 

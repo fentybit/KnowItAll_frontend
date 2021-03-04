@@ -17,15 +17,14 @@ class User {
     }
 
     static getAllUsers() {
-        apiUser.getUsers() 
+        Api.getUsers() 
             .then(users => users.data.forEach(user => new User(user.attributes.name, user.attributes.avatar, user.attributes.animals_score, user.attributes.celebrities_score, user.attributes.computer_science_score, user.attributes.geography_score, user.attributes.history_score, user.attributes.mathematics_score, user.attributes.music_score, user.attributes.sports_score)))
             .catch(error => alert(error));
     }
 
     static allUsersName() {
-        this.all.map(user => user.name);
+        this.all.map(user => console.log(user.name));
     }
-
 
     
 }
