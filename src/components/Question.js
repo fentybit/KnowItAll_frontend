@@ -19,6 +19,10 @@ class Question {
             switch (selectedCategory) {
                 case 'Animals':
                     console.log("Animalss")
+                    questionApi.getQuestions(1).then(animalsQs => {
+                        all = [];
+                        newQuestion(animalsQs.data);
+                    })
                     break;
                 case 'Celebrities':
                     console.log("Celebritiess")
@@ -44,5 +48,9 @@ class Question {
             }
 
         })
+    }
+
+    newQuestion() {
+        // data => console.log(data.data[0].attributes.question)
     }
 }
