@@ -9,7 +9,7 @@ class Category {
     }
 
     static getAll() {
-        api.getCategories()
+        categoryApi.getCategories()
             .then(categories => categories.data.forEach(category => new Category(category.attributes.name)))
             .catch(error => alert(error));
     }

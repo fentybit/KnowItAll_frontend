@@ -30,5 +30,5 @@ class apiCategory extends Api {
 }
 
 class apiQuestion extends Api {
-    // getQuestions = () => fetch()
+    getQuestions = (id) => fetch(`${this.url}/${id}/questions`).then(resp => resp.json());
 }

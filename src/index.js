@@ -1,7 +1,8 @@
 // Identify Database URLs
-const api = new apiCategory('http://localhost:3000/api/v1');
+const categoryApi = new apiCategory('http://localhost:3000/api/v1');
 const userApi = new apiUser('http://localhost:3000/api/users');
-let acceptAnswer = false;
+const questionApi = new apiQuestion('http://localhost:3000/api/v1/categories')
+// let acceptAnswer = false;
 
 // Identify HTML elements from index.html
 const greeter = document.getElementById('greeter');
@@ -23,3 +24,5 @@ userForm.addEventListener('click', (event) => {
     if (event.target.innerHTML === "Log In") User.checkUserLogin();
     if (event.target.innerHTML === "Sign Up") User.userSignUp();
 })
+
+Question.startGame();

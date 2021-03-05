@@ -29,7 +29,7 @@ class User {
         if (userInput === '') {
             userNote.innerHTML = `<small>Please enter your name.</small>`;
         } else if (userSearch !== undefined) {
-            userNote.innerHTML = `<small>Logging in..</small>`
+            userNote.innerHTML = `<small>Logging in..</small>`;
             
             setTimeout(function() {
                 userForm.remove();
@@ -39,7 +39,7 @@ class User {
                     <img src="${userSearch.avatar}" class="img-fluid avatar" alt="avatar">
                     <br><br>
                     Welcome back, <strong>${userSearch.name}</strong>!
-                `
+                `;
             }, 1300);
         } else {
             userNote.innerHTML = `<small>User is not found.</small>`;
@@ -48,9 +48,13 @@ class User {
     
     static userSignUp() {
         const userInput = document.getElementById('user-input').value.trim();
+        const userSearch = User.all.find(user => user.name === userInput);
         const newUser = new User(`${userInput}`, `https://pokeres.bastionbot.org/images/pokemon/${Math.floor(Math.random()*100) + 1}.png`);
+
         if (userInput === '') {
             userNote.innerHTML = `<small>Please enter your name.</small>`;
+        } else if (userSearch !== undefined) {
+            userNote.innerHTML = `<small>User already exists. Please log in.</small>`;
         } else {
             userNote.innerHTML = `<small>Saving..</small>`;
 
@@ -62,10 +66,11 @@ class User {
                     <img src="${newUser.avatar}" class="img-fluid avatar" alt="avatar">
                     <br><br>
                     Welcome, <strong>${userInput}</strong>!
-                `
+                `;
 
-                userApi.postUser(newUser)
+                userApi.postUser(newUser);
             }, 1300);
         }
     }
+
 }
