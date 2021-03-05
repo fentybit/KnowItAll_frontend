@@ -9,7 +9,7 @@
 <strong>Domain Modeling :: Trivia Games</strong><br>
 Welcome to my simplistic version of Online Trivia Games.<br> 
 
-<p><a href="https://github.com/fentyhall/know_it_all_backend">Frontend GitHub Repo</a></p>
+<p><a href="https://github.com/fentyhall/KnowItAll_backend">Back-End GitHub Repo</a></p>
 <p><a href="#">YouTube Demo</a></p>
 <p><a href="#">DEV Blog</a></p>
 
@@ -78,16 +78,20 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the Rails 
 <p>Current project-built was completed in a 2-week timeframe from API data search, model association development, and MVP for the user interface. Future cycle of product development as follows:</p>
 
 - [x] Add `Sub Category` to model associations. 
-- [x] Outsource additional APIs for more sub categories content.
+- [x] Outsource additional APIs for more `Sub Category` content.
+- [x] Gather user inputs on their most favorite `Category` for future app improvement.
+- [x] Utilizing `setInterval` for 20 seconds on each Trivia question.
+- [x] User authentication.
+- [x] Create toggle track for `dark mode` 😎
 
 ## Stack
 - [x] Active Record
-- [x] Bcrypt?
+- [x] Rack CORS
 - [x] PostgreSQL
-- [x] JSON
-- [x] OmniAuth GitHub and Google?
-- [x] Open-URI?
-- [x] Nokogiri?
+- [x] Fast JSON API 
+- [x] REST Client
+- [x] Open-URI
+- [x] Nokogiri
 - [x] Bootstrap v5.0
 
 ## Resources

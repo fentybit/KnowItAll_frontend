@@ -6,7 +6,7 @@ const playBtn = document.getElementById('play');
 const bodyContainer = document.querySelector('.container');
 
 // If the User press Play button
-playBtn.addEventListener('click', (event) => {
+playBtn.addEventListener('click', () => {
     startGame();
 })
 
