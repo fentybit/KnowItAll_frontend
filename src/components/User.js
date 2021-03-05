@@ -29,13 +29,17 @@ class User {
         if (userInput === '') {
             userNote.innerHTML = `<small>Please enter your name.</small>`;
         } else if (userSearch !== undefined) {
-            userNote.innerHTML = `<small>Found you!</small>`
+            userNote.innerHTML = `<small>Logging in..</small>`
             
             setTimeout(function() {
                 userForm.remove();
                 userNote.remove();
 
-                greeter.innerHTML = `Welcome back, <strong>${userSearch.name}</strong>!`
+                greeter.innerHTML = `
+                    <img src="${userSearch.avatar}" class="img-fluid avatar" alt="avatar">
+                    <br><br>
+                    Welcome back, <strong>${userSearch.name}</strong>!
+                `
             }, 1300);
         } else {
             userNote.innerHTML = `<small>User is not found.</small>`;
@@ -43,19 +47,22 @@ class User {
     }
     
     static userSignUp() {
-        console.log("Sign Up Here")
         const userInput = document.getElementById('user-input').value.trim();
         const newUser = new User(`${userInput}`, `https://pokeres.bastionbot.org/images/pokemon/${Math.floor(Math.random()*100) + 1}.png`);
         if (userInput === '') {
             userNote.innerHTML = `<small>Please enter your name.</small>`;
         } else {
-            userNote.innerHTML = `<small>Saving...</small>`;
+            userNote.innerHTML = `<small>Saving..</small>`;
 
             setTimeout(function() {
                 userForm.remove();
                 userNote.remove();
 
-                greeter.innerHTML = `Welcome, <strong>${userInput}</strong>!`
+                greeter.innerHTML = `
+                    <img src="${newUser.avatar}" class="img-fluid avatar" alt="avatar">
+                    <br><br>
+                    Welcome, <strong>${userInput}</strong>!
+                `
 
                 userApi.postUser(newUser)
             }, 1300);
