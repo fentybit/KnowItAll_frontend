@@ -56,6 +56,8 @@ class User {
                 userNote.remove();
 
                 greeter.innerHTML = `Welcome, <strong>${userInput}</strong>!`
+
+                userApi.postUser(newUser)
             }, 1300);
         }
     }
