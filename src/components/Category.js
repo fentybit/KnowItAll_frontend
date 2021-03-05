@@ -19,7 +19,7 @@ class Category {
             categoryDiv.className = 'category-btn';
             categoryDiv.innerHTML = `
                <button type="button" class="btn btn-outline-secondary" style="width: 25rem;">${this.name}</button>
-            `    
+            `;    
             containerDiv.appendChild(categoryDiv);
     }
 }
