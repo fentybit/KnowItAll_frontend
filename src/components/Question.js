@@ -32,36 +32,36 @@ class Question {
             
             switch (selectedCategory) {
                 case 'Animals': 
-                    this.filterQuestions('Animals');
-                    console.log(availableQuestions);
+                    this.filterQuestions('Animals'); 
+                    this.renderQuestion();   
                     break;
                 case 'Celebrities':
-                    this.filterQuestions('Celebrities');
-                    console.log(availableQuestions);
+                    this.filterQuestions('Celebrities'); 
+                    this.renderQuestion();  
                     break;
                 case 'Computer Science':
                     this.filterQuestions('Computer Science');
-                    console.log(availableQuestions);
+                    this.renderQuestion();  
                     break;
                 case 'Geography':
                     this.filterQuestions('Geography');
-                    console.log(availableQuestions);
+                    this.renderQuestion();  
                     break;
                 case 'History':
                     this.filterQuestions('History');
-                    console.log(availableQuestions);
+                    this.renderQuestion();  
                     break;
                 case 'Mathematics':
                     this.filterQuestions('Mathematics');
-                    console.log(availableQuestions);
+                    this.renderQuestion();  
                     break;
                 case 'Music':
                     this.filterQuestions('Music');
-                    console.log(availableQuestions);
+                    this.renderQuestion();  
                     break;
                 case 'Sports':
                     this.filterQuestions('Sports');
-                    console.log(availableQuestions);
+                    this.renderQuestion();  
                     break;
             }
         })
@@ -72,19 +72,93 @@ class Question {
     }
 
     static renderQuestion() {  
-        console.log("This is a test.")
-        // if (availableQuestions.length === 0 || questionCount >= 10) {
-        //     return endGame();
-        // }
+        containerDiv.innerHTML = '';
 
-        // questionCount++;
+        if (questionCount >= 10 || availableQuestions.length === 0) {
+            return endGame();
+        }
 
-        // // Create and Update Score Tracker
-        // const scoreCount = document.createElement('h1');
-        // scoreCount.className = 'score-tracker';
-        // scoreCount.innerText = score;
+        questionCount++;
 
+        // Create and Update Score Tracker
+        const scoreCount = document.createElement('h1');
+        scoreCount.className = 'score-tracker';
+        scoreCount.innerText = score;
+
+        const scoreDiv = document.createElement('div');
+        scoreDiv.id = 'tracker';
+        scoreDiv.innerHTML = `<p class="text-muted" style="text-align: center;">score</p>`
+        scoreDiv.appendChild(scoreCount);
+
+        // Initialize random question selections
+        let randomIndex = Math.floor(Math.random() * availableQuestions.length);
+        currentQues = availableQuestions[randomIndex];
+
+        // Create <div class="container">
+        let divContainer = document.createElement('div');
+        divContainer.className = 'card border-success mb-3';
+        divContainer.style.width = '25rem';
+        divContainer.innerHTML = `
+            <div class='card-header'>
+                ${currentQues.question}
+            </div>
+            <ul class='list-group list-group-flush'>           
+                <li class='list-group-item'> &nbsp; ${currentQues.choice1}</li>
+                <li class='list-group-item'> &nbsp; ${currentQues.choice2}</li>      
+                <li class='list-group-item'> &nbsp; ${currentQues.choice3}</li>      
+                <li class='list-group-item'> &nbsp; ${currentQues.choice4}</li>
+            </ul>
+        `;
+
+        // Update Question Count
+        const questionTracker = document.createElement('p');
+        questionTracker.className = 'question-tracker text-muted';
+        questionTracker.innerHTML = `${questionCount} / 10`;
         
+        // Update Progress Bar
+        const progressBar = document.createElement('div');
+        progressBar.className = 'progress';
+        progressBar.innerHTML = `
+            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="${questionCount/12 * 100}" aria-valuemin="0" aria-valuemax="100" style="width: ${questionCount/12 * 100}%"></div> 
+        `;
+
+        containerDiv.append(scoreDiv, divContainer, questionTracker, progressBar);
+
+        // Delete previous question from the availableQuestions Array
+        availableQuestions.splice(randomIndex, 1);
+
+        // Allow the user to accept an answer 
+        acceptAnswer = true;
+        this.checkAnswer();
+    }
+
+    static checkAnswer() {
+        const selections = Array.from(document.getElementsByClassName('list-group-item'));
+
+        selections.forEach((selection) => {
+            selection.addEventListener('click', (event) => {
+                // If we are not ready accepting answer 
+                if (!acceptAnswer) return;
+    
+                // The user can only click/answer once 
+                acceptAnswer = false;
+    
+                const userAnswer = event.target;
+
+                // Conditionals to check the userAnswer validity
+                const addClass = (userAnswer.innerText.trim() === currentQues.answer) ? "correct" : "incorrect";
+
+                // Update Score Count
+                if (addClass === "correct") score += 1;
+
+                userAnswer.classList.add(addClass);
+
+                setTimeout( () => {
+                    // Update Question cards
+                    this.renderQuestion()
+                }, 1000)
+            })
+        })
     }
 
     endGame() {
