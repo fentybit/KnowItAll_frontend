@@ -11,6 +11,9 @@ const userNote = document.querySelector('.user-note');
 const playBtn = document.getElementById('play');
 const containerDiv = document.querySelector('.container');
 
+// Identify Current Category Selection
+let currentCategory = '';
+
 playBtn.addEventListener('click', () => {
     containerDiv.innerHTML = '';
     Category.getAll();
@@ -18,6 +21,9 @@ playBtn.addEventListener('click', () => {
 
 // Identify all Users
 User.getAllUsers();
+
+// Identify Current User 
+let currentUser = {};
 
 userForm.addEventListener('click', (event) => {    
     if (event.target.innerHTML === "Log In") User.checkUserLogin();

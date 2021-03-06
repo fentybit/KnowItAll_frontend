@@ -23,6 +23,10 @@ class apiUser extends Api {
             console.error('Error:', error);
         });
     }
+
+    updateScore() {
+        console.log("In the updateScore method")
+    }
 }
 
 class apiCategory extends Api {

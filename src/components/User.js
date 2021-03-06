@@ -29,6 +29,8 @@ class User {
         if (userInput === '') {
             userNote.innerHTML = `<small>Please enter your name.</small>`;
         } else if (userSearch !== undefined) {
+            currentUser = userSearch;
+
             userNote.innerHTML = `<small>Logging in..</small>`;
             
             setTimeout(function() {
@@ -56,6 +58,8 @@ class User {
         } else if (userSearch !== undefined) {
             userNote.innerHTML = `<small>User already exists. Please log in.</small>`;
         } else {
+            currentUser = newUser;
+
             userNote.innerHTML = `<small>Saving..</small>`;
 
             setTimeout(function() {

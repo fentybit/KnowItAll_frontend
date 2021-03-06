@@ -52,7 +52,12 @@ p {
     margin: 0;
 }
 
+#end-game-btns {
+    margin: 10px 0;
+}
+
 #greeter {
+    margin: 10px 0;
     text-align: center;
 }
 

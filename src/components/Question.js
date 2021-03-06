@@ -32,34 +32,42 @@ class Question {
             
             switch (selectedCategory) {
                 case 'Animals': 
+                    currentCategory = 'animals';
                     this.filterQuestions('Animals'); 
                     this.renderQuestion();   
                     break;
                 case 'Celebrities':
+                    currentCategory = 'celebrities';
                     this.filterQuestions('Celebrities'); 
                     this.renderQuestion();  
                     break;
                 case 'Computer Science':
+                    currentCategory = 'computer_science';
                     this.filterQuestions('Computer Science');
                     this.renderQuestion();  
                     break;
                 case 'Geography':
+                    currentCategory = 'geography';
                     this.filterQuestions('Geography');
                     this.renderQuestion();  
                     break;
                 case 'History':
+                    currentCategory = 'history';
                     this.filterQuestions('History');
                     this.renderQuestion();  
                     break;
                 case 'Mathematics':
+                    currentCategory = 'mathematics';
                     this.filterQuestions('Mathematics');
                     this.renderQuestion();  
                     break;
                 case 'Music':
+                    currentCategory = 'music';
                     this.filterQuestions('Music');
                     this.renderQuestion();  
                     break;
                 case 'Sports':
+                    currentCategory = 'sports';
                     this.filterQuestions('Sports');
                     this.renderQuestion();  
                     break;
@@ -173,17 +181,32 @@ class Question {
         scoreDiv.appendChild(endGameSummary);
 
         // Set Up Condtionals for Higher Score
+        let scoreStatus = '';
 
+        if (currentUser && (currentUser[`${currentCategory}_score`] < score)) {
+            currentUser[`${currentCategory}_score`] = score;
+            userApi.updateScore();
+
+            scoreStatus = document.createElement('div');
+            scoreStatus.id = 'greeter';
+            scoreStatus.innerHTML = `
+                <img src="${currentUser.avatar}" class="img-fluid avatar" alt="avatar">
+                <br><br>
+                <p class="text-muted" style="text-align: center;">Congratulations ${currentUser.name}!</p>
+                <p class="text-muted" style="text-align: center;">This is your highest score in this category.</p>
+            `;
+        }
+    
         // Create Play Back and Home buttons 
         const endGameBtns = document.createElement('div');
         endGameBtns.className = 'd-grid gap-2';
         endGameBtns.style.width = '25rem';
         endGameBtns.innerHTML = `
-            <button type="button" class="btn btn-outline-secondary id="home">Play Again</button>
-            <button type="button" class="btn btn-outline-secondary id="home">Home</button>
+            <button type="button" class="btn btn-outline-secondary id="end-game-btns">Play Again</button>
+            <button type="button" class="btn btn-outline-secondary id="end-game-btns">Home</button>
         `;
 
-        containerDiv.append(scoreDiv, endGameBtns);
+        containerDiv.append(scoreDiv, scoreStatus, endGameBtns);
 
         endGameBtns.addEventListener('click', (event) => {
             if (event.target.innerText === 'Play Again') {
@@ -191,6 +214,7 @@ class Question {
                 containerDiv.innerHTML = '';
 
                 // Back to Category Selections
+                currentCategory = '';
                 Category.getAll();
             } else {
                 window.history.go();
