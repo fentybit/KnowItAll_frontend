@@ -74,8 +74,8 @@ class Question {
     static renderQuestion() {  
         containerDiv.innerHTML = '';
 
-        if (questionCount >= 10 || availableQuestions.length === 0) {
-            return endGame();
+        if (questionCount >= 10 || availableQuestions.length < 10) {
+            return this.endGame();
         }
 
         questionCount++;
@@ -119,7 +119,7 @@ class Question {
         const progressBar = document.createElement('div');
         progressBar.className = 'progress';
         progressBar.innerHTML = `
-            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="${questionCount/12 * 100}" aria-valuemin="0" aria-valuemax="100" style="width: ${questionCount/12 * 100}%"></div> 
+            <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="${questionCount/11 * 100}" aria-valuemin="0" aria-valuemax="100" style="width: ${questionCount/11 * 100}%"></div> 
         `;
 
         containerDiv.append(scoreDiv, divContainer, questionTracker, progressBar);
@@ -161,12 +161,41 @@ class Question {
         })
     }
 
-    endGame() {
-        console.log("Goodbye!");
+    static endGame() {
+        // Read Final Score
+        const endGameSummary = document.createElement('h1');
+        endGameSummary.className = 'score-tracker';
+        endGameSummary.innerText = score;
 
-        score = 0;
-        questionCount = 0;
-        availableQuestions = [];
+        const scoreDiv = document.createElement('div');
+        scoreDiv.id = 'tracker';
+        scoreDiv.innerHTML = `<p class="text-muted" style="text-align: center;">score</p>`;
+        scoreDiv.appendChild(endGameSummary);
+
+        // Set Up Condtionals for Higher Score
+
+        // Create Play Back and Home buttons 
+        const endGameBtns = document.createElement('div');
+        endGameBtns.className = 'd-grid gap-2';
+        endGameBtns.style.width = '25rem';
+        endGameBtns.innerHTML = `
+            <button type="button" class="btn btn-outline-secondary id="home">Play Again</button>
+            <button type="button" class="btn btn-outline-secondary id="home">Home</button>
+        `;
+
+        containerDiv.append(scoreDiv, endGameBtns);
+
+        endGameBtns.addEventListener('click', (event) => {
+            if (event.target.innerText === 'Play Again') {
+                // Delete previous buttons
+                containerDiv.innerHTML = '';
+
+                // Back to Category Selections
+                Category.getAll();
+            } else {
+                window.history.go();
+            }
+        })
     }
 
 }
