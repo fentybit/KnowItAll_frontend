@@ -185,7 +185,7 @@ class Question {
 
         if (currentUser && (currentUser[`${currentCategory}_score`] < score)) {
             currentUser[`${currentCategory}_score`] = score;
-            userApi.updateScore();
+            userApi.updateScore(currentUser);
 
             scoreStatus = document.createElement('div');
             scoreStatus.id = 'greeter';
@@ -209,6 +209,9 @@ class Question {
         containerDiv.append(scoreDiv, scoreStatus, endGameBtns);
 
         endGameBtns.addEventListener('click', (event) => {
+            questionCount = 0;
+            score = 0;
+
             if (event.target.innerText === 'Play Again') {
                 // Delete previous buttons
                 containerDiv.innerHTML = '';

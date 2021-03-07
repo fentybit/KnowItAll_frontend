@@ -24,8 +24,13 @@ class apiUser extends Api {
         });
     }
 
-    updateScore() {
-        console.log("In the updateScore method")
+    updateScore = (user) => {
+        fetch(`${this.url}`, {
+            method: "PATCH",
+            headers: {
+                ""
+            }
+        })
     }
 }
 
