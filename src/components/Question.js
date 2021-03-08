@@ -111,10 +111,10 @@ class Question {
                 ${currentQues.question}
             </div>
             <ul class='list-group list-group-flush'>           
-                <li class='list-group-item'> &nbsp; ${currentQues.choice1}</li>
-                <li class='list-group-item'> &nbsp; ${currentQues.choice2}</li>      
-                <li class='list-group-item'> &nbsp; ${currentQues.choice3}</li>      
-                <li class='list-group-item'> &nbsp; ${currentQues.choice4}</li>
+                <li class='list-group-item'>${currentQues.choice1}</li>
+                <li class='list-group-item'>${currentQues.choice2}</li>      
+                <li class='list-group-item'>${currentQues.choice3}</li>      
+                <li class='list-group-item'>${currentQues.choice4}</li>
             </ul>
         `;
 
