@@ -1,7 +1,7 @@
 # Know It All :: Front-End
 
 <div align="center">
-  <img src="#">
+  <img src="images/main.gif">
 </div>
 
 <br>
@@ -21,7 +21,7 @@ Welcome to my simplistic version of Online Trivia Games.<br>
 ## Features
 
 <div align="center">
-  <img src="erd.png">
+  <img src="images/erd.png">
 </div>
 
 <br>
