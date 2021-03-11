@@ -10,13 +10,13 @@
 Welcome to my simplistic version of Online Trivia Games.<br> 
 
 <p><a href="https://github.com/fentyhall/KnowItAll_backend">Back-End GitHub Repo</a></p>
-<p><a href="#">YouTube Demo</a></p>
+<p><a href="https://youtu.be/kU_Ay68TWcM">YouTube Demo</a></p>
 <p><a href="#">DEV Blog</a></p>
 
 ## About
 
 <p>I dedicate this project for my husband, who loves trivia very much, and cooked the past two weeks while I was working diligently on this project.</p>
-<p>The Minimum Viable Product (MVP) of <strong>Know It All</strong> is to provide the `user` with few trivia `categories` to select from.</p>
+<p>The Minimum Viable Product (MVP) of <strong>Know It All</strong> is to provide the User with few trivia Categories to select from.</p>
 
 ## Features
 
@@ -37,9 +37,7 @@ User, Category<br>
 ApplicationController<br>
 UsersController<br>
 CategoriesController<br>
-
-**User Account and Validation** <br>
-Pending.<br>
+QuestionsController<br>
 
 ## API Database
 
@@ -49,7 +47,7 @@ Pending.<br>
 
 ## Installation
 
-<strong>Backend</strong>
+<strong>Back-End</strong>
 
 ```ruby
 $ git clone 👾
@@ -61,12 +59,8 @@ $ rails s
 
 Open Chrome browser, and redirect to 'http://localhost:3000' to start the Rails API.
 
-<strong>Frontend</strong>
+<strong>Front-End</strong>
 <p>Open Chrome browser, and redirect to 'http://127.0.0.1:5500/index.html' to start the app.</p>
-
-**Alternatively, it is fully deployed on Heroku!**
-<br>
-<a href="#">Know It All</a>
 
 ## Build Status and Future Improvement
 <p>Current project-built was completed in a 2-week timeframe from API data search, model association development, and MVP for the user interface. Future cycle of product development as follows:</p>
@@ -77,6 +71,14 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the Rails 
 - [x] Utilizing `setInterval` for 20 seconds on each Trivia question.
 - [x] User authentication.
 - [x] Create toggle track for `dark mode` 😎
+
+<strong>Future Project Build ERD</strong><br>
+
+<div align="center">
+  <img src="images/erd2.png">
+</div>
+
+<br>
 
 ## Stack
 - [x] Active Record
