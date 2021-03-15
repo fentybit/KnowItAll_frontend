@@ -15,7 +15,6 @@ Welcome to my simplistic version of Online Trivia Games.<br>
 
 ## About
 
-<p>I dedicate this project for my husband, who loves trivia very much, and cooked the past two weeks while I was working diligently on this project.</p>
 <p>The Minimum Viable Product (MVP) of <strong>Know It All</strong> is to provide the User with few trivia Categories to select from.</p>
 
 ## Features
