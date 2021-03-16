@@ -75,6 +75,7 @@ class Question {
         })
     }
 
+    // For time complexity, this logic could be encapsulated in the back-end
     static filterQuestions(category) {
         availableQuestions = Question.all.filter(q => q.category_name === category);
     }

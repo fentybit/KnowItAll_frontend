@@ -8,11 +8,12 @@ class Category {
         this.constructor.all.push(this);
     }
 
-    static getAll() {
-        categoryApi.getCategories()
-            .then(categories => categories.data.forEach(category => new Category(category.attributes.name)))
-            .catch(error => alert(error));
-    }
+    // This static function is not necessary, re-factor function to index.js
+    // static getAll() {
+    //     categoryApi.getCategories()
+    //         .then(categories => categories.data.forEach(category => new Category(category.attributes.name)))
+    //         .catch(error => alert(error));
+    // }
 
     renderCategory = () => {
             const categoryDiv = document.createElement('div');

@@ -16,7 +16,9 @@ let currentCategory = '';
 
 playBtn.addEventListener('click', () => {
     containerDiv.innerHTML = '';
-    Category.getAll();
+    categoryApi.getCategories()
+        .then(categories => categories.data.forEach(category => new Category(category.attributes.name)))
+        .catch(error => alert(error));
 })
 
 // Identify all Users
@@ -32,3 +34,6 @@ userForm.addEventListener('click', (event) => {
 
 Question.init();
 Question.startGame();
+
+// Suggestions:
+// Group addEventListener in one Class
