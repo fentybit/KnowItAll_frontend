@@ -1,7 +1,7 @@
 // Identify Database URLs
 const categoryApi = new apiCategory('https://lets-know-it-all.herokuapp.com/api/v1');
 const userApi = new apiUser('https://lets-know-it-all.herokuapp.com/api/users');
-const questionApi = new apiQuestion('https://lets-know-it-all.herokuapp.com/api/v1/categories')
+const questionApi = new apiQuestion('https://lets-know-it-all.herokuapp.com/api/v1/categories');
 
 // Identify HTML elements from index.html
 const greeter = document.getElementById('greeter');
