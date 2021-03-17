@@ -106,7 +106,7 @@ class Question {
         // Create <div class="container">
         let divContainer = document.createElement('div');
         divContainer.className = 'card border-success mb-3';
-        divContainer.style.width = '25rem';
+        divContainer.style.width = '100%';
         divContainer.innerHTML = `
             <div class='card-header'>
                 ${currentQues.question}
@@ -201,7 +201,7 @@ class Question {
         // Create Play Back and Home buttons 
         const endGameBtns = document.createElement('div');
         endGameBtns.className = 'd-grid gap-2';
-        endGameBtns.style.width = '25rem';
+        endGameBtns.style.width = '100%';
         endGameBtns.innerHTML = `
             <button type="button" class="btn btn-outline-secondary id="end-game-btns">Play Again</button>
             <button type="button" class="btn btn-outline-secondary id="end-game-btns">Home</button>

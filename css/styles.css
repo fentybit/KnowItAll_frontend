@@ -18,7 +18,7 @@ h2 {
 }
 
 .container {
-    width: auto;
+    max-width: 500px;
     padding: 0 15px;
 }
 

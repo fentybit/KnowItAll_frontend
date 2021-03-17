@@ -19,7 +19,7 @@ class Category {
             const categoryDiv = document.createElement('div');
             categoryDiv.className = 'category-btn';
             categoryDiv.innerHTML = `
-               <button type="button" class="btn btn-outline-secondary" style="width: 25rem;">${this.name}</button>
+               <button type="button" class="btn btn-outline-secondary" style="width: 100%;">${this.name}</button>
             `;    
             containerDiv.appendChild(categoryDiv);
     }
