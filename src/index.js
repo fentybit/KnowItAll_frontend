@@ -1,3 +1,5 @@
+// import { Category } from './main.js';
+
 // Identify Database URLs
 const categoryApi = new apiCategory('https://lets-know-it-all.herokuapp.com/api/v1');
 const userApi = new apiUser('https://lets-know-it-all.herokuapp.com/api/users');
