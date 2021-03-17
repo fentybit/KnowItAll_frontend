@@ -24,5 +24,3 @@ class Category {
             containerDiv.appendChild(categoryDiv);
     }
 }
-
-export { Category };
