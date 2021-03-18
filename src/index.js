@@ -16,9 +16,7 @@ let currentCategory = '';
 
 playBtn.addEventListener('click', () => {
     containerDiv.innerHTML = '';
-    categoryApi.getCategories()
-        .then(categories => categories.data.forEach(category => new Category(category.attributes.name)))
-        .catch(error => alert(error));
+    Category.getAll();
 })
 
 // Identify all Users
