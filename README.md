@@ -61,6 +61,10 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the Rails 
 <strong>Front-End</strong>
 <p>Open Chrome browser, and redirect to 'http://127.0.0.1:5500/index.html' to start the app.</p>
 
+**Alternatively, it is fully deployed on Heroku!**
+<br>
+<a href="https://lets-know-it-all.netlify.app/">Know It All</a>
+
 ## Build Status and Future Improvement
 <p>Current project-built was completed in a 2-week timeframe from API data search, model association development, and MVP for the user interface. Future cycle of product development as follows:</p>
 
