@@ -1,7 +1,7 @@
 // Identify Database URLs
-const categoryApi = new apiCategory('https://lets-know-it-all.herokuapp.com/api/v1');
-const userApi = new apiUser('https://lets-know-it-all.herokuapp.com/api/users');
-const questionApi = new apiQuestion('https://lets-know-it-all.herokuapp.com/api/v1/categories');
+const categoryApi = new Api('https://lets-know-it-all.herokuapp.com/api/v1');
+const userApi = new Api('https://lets-know-it-all.herokuapp.com/api/users');
+const questionApi = new Api('https://lets-know-it-all.herokuapp.com/api/v1/categories');
 
 // Identify HTML elements from index.html
 const greeter = document.getElementById('greeter');
@@ -16,7 +16,9 @@ let currentCategory = '';
 
 playBtn.addEventListener('click', () => {
     containerDiv.innerHTML = '';
-    Category.getAll();
+    categoryApi.getCategories()
+        .then(categories => categories.data.forEach(category => new Category(category.attributes.name)))
+        .catch(error => alert(error));
 })
 
 // Identify all Users
