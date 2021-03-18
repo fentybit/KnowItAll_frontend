@@ -61,7 +61,7 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the Rails 
 <strong>Front-End</strong>
 <p>Open Chrome browser, and redirect to 'http://127.0.0.1:5500/index.html' to start the app.</p>
 
-**Alternatively, it is fully deployed on Heroku!**
+**Alternatively, it is fully deployed on Netlify!**
 <br>
 <a href="https://lets-know-it-all.netlify.app/">Know It All</a>
 
