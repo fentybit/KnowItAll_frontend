@@ -2,7 +2,9 @@ class Api {
     constructor(url) {
         this.url = url;
     }
+}
 
+class apiUser extends Api {  
     // for User database
     getUsers = () => fetch(`${this.url}`).then(resp => resp.json());
     
@@ -44,19 +46,14 @@ class Api {
             console.error('Error:', error);
         });
     }
+}
 
+class apiCategory extends Api { 
     // for Category database
     getCategories = () => fetch(`${this.url}/categories`).then(resp => resp.json());
+}
 
+class apiQuestion extends Api {  
     // for Question database
     getQuestions = (id) => fetch(`${this.url}/${id}/questions`).then(resp => resp.json());
 }
-
-// class apiUser extends Api {  
-// }
-
-// class apiCategory extends Api { 
-// }
-
-// class apiQuestion extends Api {   
-// }

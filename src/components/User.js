@@ -52,7 +52,7 @@ class User {
     static userSignUp() {
         const userInput = document.getElementById('user-input').value.trim();
         const userSearch = User.all.find(user => user.name === userInput);
-        const newUser = new User(`${userInput}`, `https://pokeres.bastionbot.org/images/pokemon/${Math.floor(Math.random()*100) + 1}.png`);
+        const newUser = new User(`${User.all.length}`, `${userInput}`, `https://pokeres.bastionbot.org/images/pokemon/${Math.floor(Math.random()*100) + 1}.png`);
 
         if (userInput === '') {
             userNote.innerHTML = `<small>Please enter your name.</small>`;
