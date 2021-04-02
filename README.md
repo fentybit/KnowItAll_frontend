@@ -9,9 +9,9 @@
 <strong>Domain Modeling :: Trivia Games</strong><br>
 Welcome to my simplistic version of Online Trivia Games.<br> 
 
-<p><a href="https://github.com/fentyhall/KnowItAll_backend">Back-End GitHub Repo</a></p>
+<p><a href="https://github.com/fentybit/KnowItAll_backend">Back-End GitHub Repo</a></p>
 <p><a href="https://youtu.be/kU_Ay68TWcM">YouTube Demo</a></p>
-<p><a href="https://dev.to/codinghall/know-it-all-2kpp">DEV Blog</a></p>
+<p><a href="https://dev.to/fentybit/know-it-all-2kpp">DEV Blog</a></p>
 
 ## About
 
