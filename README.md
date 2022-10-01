@@ -63,7 +63,10 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the Rails 
 
 **Alternatively, it is fully deployed on Netlify!**
 <br>
-<a href="https://lets-know-it-all.netlify.app/">Know It All</a>
+<p><a href="https://lets-know-it-all.netlify.app/">Know It All</a></p>
+<small>Feel free to use <strong>David Strong</strong> to sign in!</small>
+
+<br>
 
 ## Build Status and Future Improvement
 <p>Current project-built was completed in a 2-week timeframe from API data search, model association development, and MVP for the user interface. Future cycle of product development as follows:</p>
